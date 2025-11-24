@@ -32,6 +32,13 @@ jobs:
         run: |
           npm run build
 
+      - name: Prevent Jekyll (create .nojekyll)
+        working-directory: ./frontend
+        run: |
+          if [ -d ./dist ]; then
+            touch ./dist/.nojekyll
+          fi
+
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v2
         with:
